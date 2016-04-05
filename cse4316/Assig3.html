@@ -1,0 +1,214 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Assignment 3</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-04-05"><meta name="DC.source" content="Assig3.m">
+<style type="text/css">
+body { zoom: 150%;}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+</style></head>
+<body><div class="content">
+<h1>Assignment 3</h1>
+<h2>Contents</h2>
+<div><ul><li><a href="#10">The problem</a></li><li><a href="#1">Base frame</a></li><li><a href="#2">Homogeneous transformation from T0 to T1</a></li><li><a href="#3">Homogeneous transformation from T0 to T2</a></li><li><a href="#4">Homogeneous transformation from T0 to T3</a></li><li><a href="#5">Homogeneous transformation from T2 to T3</a></li><li><a href="#6">Convert any point p0 to p1, p2, or p3</a></li>
+<!--<li><a href="#7">Animation</a></li>
+-->
+</ul></div>
+<h2>The problem<a name="10"></a></h2>
+<img vspace="5" hspace="5" src="prob.svg" alt="">
+<p>Consider the diagram of Figure 2.16. A robot is set up 1 meter from a table. The table top is 1 meter high and 1 meter square. A frame o1x1y1z1 is fixed to the edge of the table as shown. A cube measuring 20 cm on side is placed in the center of the table with frame o2x2y2z2 established at the center of the cube as shown. A camera is situated directly above the center of the block 2m above the table top with frame o3x3y3z3 attached as shown.</p><div>
+<ol><li>Find the homogeneous transformations relating each of these frames to the base frame o0x0y0z0</li>
+<li>Find the homogeneous transformation relating the frame o2x2y2z2 to the camera frame o3x3y3z3</li>
+<li>Given p0 = [0; 1; 1]. Find  p1, p2, and p3</li>
+<li>Write the Matlab code to solve this problem and convert any point from frame 0 to the anther frames and Draw frames in Matlab.</li></ol>
+
+<h2>Base frame<a name="1"></a></h2><pre class="codeinput">T0=trotx(0);
+trplot(T0,<span class="string">'frame'</span>,<span class="string">'T0'</span>,<span class="string">'color'</span>,<span class="string">'k'</span>)
+axis([-1 2 0 3 0 4])
+view(110,15)
+hold <span class="string">on</span>
+</pre><img vspace="5" hspace="5" src="Assig3_01.svg" alt="">
+
+<h2>Homogeneous transformation from T0 to T1<a name="2"></a></h2><pre class="codeinput">H01=transl(0,1,1)
+tranimate(H01,<span class="string">'frame'</span>,<span class="string">'T1'</span>,<span class="string">'color'</span>,<span class="string">'r'</span>)
+hold <span class="string">on</span>
+</pre><pre class="codeoutput">
+H01 =
+
+     1     0     0     0
+     0     1     0     1
+     0     0     1     1
+     0     0     0     1
+
+</pre><img vspace="5" hspace="5" src="Assig3_02.svg" alt=""> <h2>Homogeneous transformation from T0 to T2<a name="3"></a></h2><pre class="codeinput">H02=transl(-0.5,1.5,1)
+tranimate(H02,<span class="string">'frame'</span>,<span class="string">'T2'</span>,<span class="string">'color'</span>,<span class="string">'m'</span>)
+hold <span class="string">on</span>
+</pre><pre class="codeoutput">
+H02 =
+
+    1.0000         0         0   -0.5000
+         0    1.0000         0    1.5000
+         0         0    1.0000    1.0000
+         0         0         0    1.0000
+
+</pre><img vspace="5" hspace="5" src="Assig3_03.svg" alt=""> <h2>Homogeneous transformation from T0 to T3<a name="4"></a></h2><pre class="codeinput">H03=transl(-0.5,1.5,3)*trotz(pi/2)*trotx(pi)
+tranimate(H03,<span class="string">'frame'</span>,<span class="string">'T3'</span>,<span class="string">'color'</span>,<span class="string">'b'</span>)
+hold <span class="string">on</span>
+</pre>
+<pre class="codeoutput">
+H03 =
+
+    0.0000    1.0000    0.0000   -0.5000
+    1.0000   -0.0000   -0.0000    1.5000
+         0    0.0000   -1.0000    3.0000
+         0         0         0    1.0000		 
+
+</pre>
+<img vspace="5" hspace="5" src="Assig3_04.svg" alt=""> <h2>Homogeneous transformation from T2 to T3<a name="5"></a></h2><pre class="codeinput">H32=H03\H02
+tranimate(H02,H03,<span class="string">'frame'</span>,<span class="string">'T3'</span>,<span class="string">'color'</span>,<span class="string">'b'</span>)
+</pre><pre class="codeoutput">
+H32 =
+
+    0.0000    1.0000         0         0
+    1.0000   -0.0000    0.0000   -0.0000
+    0.0000   -0.0000   -1.0000    2.0000
+         0         0         0    1.0000
+		 
+</pre><img vspace="5" hspace="5" src="Assig3_05.svg" alt=""> 
+<h2>Convert any point p0 to p1, p2, or p3<a name="6"></a></h2><pre class="codeinput">p0=[0 1 1]'
+plotp(p0,<span class="string">'*k'</span>)
+p1=H01\[p0;1]
+p2=H02\[p0;1]
+p3=H03\[p0;1]
+</pre><pre class="codeoutput">
+p0 =
+
+     0
+     1
+     1
+
+
+p1 =
+
+     0
+     0
+     0
+     1
+
+
+p2 =
+
+    0.5000
+   -0.5000
+         0
+    1.0000
+
+
+p3 =
+
+   -0.5000
+    0.5000
+    2.0000
+    1.0000
+	
+</pre><img vspace="5" hspace="5" src="Assig3_06.svg" alt="">
+<!-- <h2>Animation<a name="7"></a></h2>
+<img vspace="5" hspace="5" src="gif.gif" alt="" width="595.8" height="446.7">
+-->
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Assignment 3
+%% The problem
+% Consider the diagram of Figure 2.16. A robot is set up 1 meter from a table. The table top is 1 meter high and 1 meter square. A frame o1x1y1z1 is fixed to the edge of the table as shown. A cube measuring 20 cm on side is placed in the center of the table with frame o2 x2 y2 z2 established at the center of the cube as shown. A camera is situated directly above the center of the block 2m above the table top with frame o3 x3 y3 z3 attached as shown. 
+%
+% # Find the homogeneous transformations relating each of these frames to the base frame o0 x0 y0 z0
+% # Find the homogeneous transformation relating the frame o2x2y2z2 to the camera frame o3 x3 y3 z3
+% # Given p0 = [0; 1; 1]. Find  p1,p2 ,p3
+% # Write the Matlab code to solve this problem and convert any point from frame 0 to the anther frames and Draw frames in Matlab.
+%% Base frame
+T0=trotx(0);
+trplot(T0,'frame','T0','color','k')
+axis([-1 2 0 3 0 4])
+view(110,15)
+hold on 
+%% Homogeneous transformation from T0 to T1
+H01=transl(0,1,1)
+tranimate(H01,'frame','T1','color','r')
+hold on 
+%% Homogeneous transformation from T0 to T2
+H02=transl(-0.5,1.5,1)
+tranimate(H02,'frame','T2','color','m')
+hold on 
+%% Homogeneous transformation from T0 to T3
+H03=transl(-0.5,1.5,3)*trotz(pi/2)*trotx(pi)
+tranimate(H03,'frame','T3','color','b')
+hold on
+%% Homogeneous transformation from T2 to T3
+H32=H03\H02
+tranimate(H02,H03,'frame','T3','color','b')
+%% Convert any point p0 to p1, p2, or p3
+p0=[0 1 1]'
+plotp(p0,'*k')
+p1=H01\[p0;1]
+p2=H02\[p0;1]
+p3=H03\[p0;1]
+##### SOURCE END #####
+-->
+</body></html>
