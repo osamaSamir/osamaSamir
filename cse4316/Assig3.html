@@ -6,7 +6,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Assignment 3</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-04-05"><meta name="DC.source" content="Assig3.m">
 <style type="text/css">
-body { zoom: 200%;}
+body { zoom: 150%;}
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,7 +66,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 <body><div class="content">
 <h1>Assignment 3</h1>
 <h2>Contents</h2>
-<div><ul><li><a href="#10">The problem</a></li><li><a href="#1">Base frame</a></li><li><a href="#2">Homogeneous transformation from T0 to T1</a></li><li><a href="#3">Homogeneous transformation from T0 to T2</a></li><li><a href="#4">Homogeneous transformation from T0 to T3</a></li><li><a href="#5">Homogeneous transformation from T2 to T3</a></li><li><a href="#6">Convert any point p0 to p1, p2, or p3</a></li></ul></div>
+<div><ul><li><a href="#10">The problem</a></li><li><a href="#1">Base frame</a></li><li><a href="#2">Homogeneous transformation from T0 to T1</a></li><li><a href="#3">Homogeneous transformation from T0 to T2</a></li><li><a href="#4">Homogeneous transformation from T0 to T3</a></li><li><a href="#5">Homogeneous transformation from T2 to T3</a></li><li><a href="#6">Convert any point p0 to p1, p2, or p3</a></li><li><a href="#7">Animation</a></li></ul></div>
 <h2>The problem<a name="10"></a></h2>
 <img vspace="5" hspace="5" src="prob.svg" alt="">
 <p>Consider the diagram of Figure 2.16. A robot is set up 1 meter from a table. The table top is 1 meter high and 1 meter square. A frame o1x1y1z1 is fixed to the edge of the table as shown. A cube measuring 20 cm on side is placed in the center of the table with frame o2x2y2z2 established at the center of the cube as shown. A camera is situated directly above the center of the block 2m above the table top with frame o3x3y3z3 attached as shown.</p><div>
@@ -117,7 +117,8 @@ H32 =
     0.0000   -0.0000   -1.0000    2.0000
          0         0         0    1.0000
 
-</pre><img vspace="5" hspace="5" src="Assig3_05.svg" alt=""> <h2>Convert any point p0 to p1, p2, or p3<a name="6"></a></h2><pre class="codeinput">p0=[0 1 1]'
+</pre><img vspace="5" hspace="5" src="Assig3_05.svg" alt=""> 
+<h2>Convert any point p0 to p1, p2, or p3<a name="6"></a></h2><pre class="codeinput">p0=[0 1 1]'
 plotp(p0,<span class="string">'*k'</span>)
 p1=H01*[p0;1]
 p2=H02*[p0;1]
@@ -153,7 +154,10 @@ p3 =
     2.0000
     1.0000
 
-</pre><img vspace="5" hspace="5" src="Assig3_06.svg" alt=""></div>
+</pre><img vspace="5" hspace="5" src="Assig3_06.svg" alt="">
+<h2>Animation<a name="7"></a></h2>
+<img vspace="5" hspace="5" src="gif.gif" alt="" width="595.8" height="446.7">
+</div>
 <!--
 ##### SOURCE BEGIN #####
 %% Assignment 3
