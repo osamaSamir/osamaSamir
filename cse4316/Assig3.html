@@ -104,10 +104,20 @@ H02 =
          0         0    1.0000    1.0000
          0         0         0    1.0000
 
-</pre><img vspace="5" hspace="5" src="Assig3_03.svg" alt=""> <h2>Homogeneous transformation from T0 to T3<a name="4"></a></h2><pre class="codeinput">H03=transl(0,1,3)*trotz(pi/2)*trotx(pi);
+</pre><img vspace="5" hspace="5" src="Assig3_03.svg" alt=""> <h2>Homogeneous transformation from T0 to T3<a name="4"></a></h2><pre class="codeinput">H03=transl(0,1,3)*trotz(pi/2)*trotx(pi)
 tranimate(H03,<span class="string">'frame'</span>,<span class="string">'T3'</span>,<span class="string">'color'</span>,<span class="string">'b'</span>)
 hold <span class="string">on</span>
-</pre><img vspace="5" hspace="5" src="Assig3_04.svg" alt=""> <h2>Homogeneous transformation from T2 to T3<a name="5"></a></h2><pre class="codeinput">H32=H03\H02
+</pre>
+<pre class="codeoutput">
+H03 =
+
+    0.0000    1.0000    0.0000         0
+    1.0000   -0.0000   -0.0000    1.0000
+         0    0.0000   -1.0000    3.0000
+         0         0         0    1.0000
+		 
+</pre>
+<img vspace="5" hspace="5" src="Assig3_04.svg" alt=""> <h2>Homogeneous transformation from T2 to T3<a name="5"></a></h2><pre class="codeinput">H32=H03\H02
 tranimate(H02,H03,<span class="string">'frame'</span>,<span class="string">'T3'</span>,<span class="string">'color'</span>,<span class="string">'b'</span>)
 </pre><pre class="codeoutput">
 H32 =
