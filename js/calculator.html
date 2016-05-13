@@ -1,0 +1,101 @@
+<html>
+<head>
+<h1>Calculator</h1>
+<style>
+body {
+    background-color: #d0e4fe;
+	font-family: "Times new roman", monospace;
+}
+h1{
+	color: orange;
+    text-align: center;
+}
+.out{
+	display: inline-block;
+	background-color: gold;
+	width: 100px;
+}
+.in{
+	background-color: #ffff00;
+	width: 50px;
+}
+.msg{
+	color: red;
+}
+.before{
+	display: inline-block;
+	color: blue;
+	width: 60px;
+	font-family: monospace;
+}
+</style>
+</head>
+<script type="text/javascript">
+var curErr={};
+var rndm = Math.round( Math.random()*1e4)/1e3;
+var rndmi = Math.round( Math.random()*100-50);
+var neg =Math.round( Math.random()) >0.5?"":"-";
+function chk(name,id) {
+	var regex = /^-?\d*\.{0,1}\d+$/ // /^[0-9.]+$/  //accept one or more numbers
+	var fld = document.getElementById(name);
+	var val = fld.value;
+	if (!regex.test(val)) {
+		document.getElementById(id).innerHTML = "Enter a valid number e.g "+neg+rndm+" or "+rndmi;
+		fld.style.background = '#ffff00';
+		curErr[name]=true;
+	} else {
+		document.getElementById(id).innerHTML = "";
+		fld.style.background = 'white';
+		curErr[name]=false;
+	}
+}
+function validateForm(){
+	chk('in1','msg1');
+	chk('in2','msg2');
+	for(err in curErr){
+		if(curErr[err]==true){
+			alert("Please enter valid numbers");
+			return false;
+		}
+	}
+	var num=[];
+	num[1] = Number(document.getElementById("in1").value);
+	num[2] = Number(document.getElementById("in2").value);
+	return num;
+}
+function calc(){
+	
+	if(num=validateForm()){
+		document.getElementById("resultSum").innerHTML = Math.round((num[1]+num[2])*1e10)/1e10;;
+		document.getElementById("resultSub").innerHTML = Math.round((num[1]-num[2])*1e10)/1e10;;
+		document.getElementById("resultMul").innerHTML = Math.round((num[1]*num[2])*1e10)/1e10;;
+		document.getElementById("resultDiv").innerHTML =Math.round((num[1]/num[2])*1e10)/1e10;;
+	}
+	return false;
+}
+</script>
+<body>
+	<label class="before">x = </label>
+	<input type="text" class="in" id="in1" maxlength="5" oninput="chk(id,'msg1')" >*
+	<label id="msg1" class="msg">Enter a number </label>
+	<br />
+	<label class="before">y = </label>
+	<input type="text" class="in" id="in2" maxlength="5" oninput="chk(id,'msg2')">*
+	<label id="msg2" class="msg">Enter a number</label>
+	<br /><br />
+	<label class="before">x + y = </label>
+	<label id="resultSum" class="out"></label>
+	<br />
+	<label class="before">x - y = </label>
+	<label id="resultSub" class="out"></label>
+	<br />
+	<label class="before">x * y = </label>
+	<label id="resultMul" class="out"></label>
+	<br />
+	<label class="before">x &divide; y = </label>
+	<label id="resultDiv" class="out"></label>
+	<br />
+	<br />
+	<input type="button" id="butSub" value="calculate" onclick="calc()">
+</body>
+</html>
