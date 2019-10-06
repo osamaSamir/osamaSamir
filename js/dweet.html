@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chat</title>
+    <script src="http://dweet.io/client/dweet.io.min.js"></script>
+</head>
+
+<body>
+    <h2>Chat</h2>
+    <input type="text" id="msg" style="width:400px; height:50px;" />
+    <button id="btn">Send</button>
+    <div id="mydiv">All msgs go here:</div>
+    <script>
+        var button = document.getElementById("btn");
+        button.onclick = function () {
+            var obj = {
+                msg: document.getElementById("msg").value
+            }
+            dweetio.dweet_for("osamazagzu", obj, function (err, dweet) {
+
+                document.getElementById("msg").value = "";
+            });
+        }
+        dweetio.listen_for("osamazagzu", function (dweet) {
+            console.log(dweet);
+            document.getElementById("mydiv").innerHTML += ("<br />" + dweet.content.msg);
+        });
+    </script>
+</body>
+
+</html>
